@@ -1,1 +1,1 @@
-web: gunicorn Host_Pathogen_Interaction.wsgi
+web: python manage.py runserver
