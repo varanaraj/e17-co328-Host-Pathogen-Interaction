@@ -1,1 +1,1 @@
-web: gunicorn Host_Pathogen_Interaction.wsgi --log-file
+web: gunicorn Host_Pathogen_Interaction.wsgi
