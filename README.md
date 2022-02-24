@@ -1,10 +1,8 @@
----
-Title: Host Pathogen Interaction
-repository-name: [GitHub](https://github.com/cepdnaclk/e17-co328-Host-Pathogen-Interaction)
-
-page: [BioWeb](https://cepdnaclk.github.io/e17-co328-Host-Pathogen-Interaction/)
-frontend: [BioWeb](https://bio2web.herokuapp.com/)
----
+|Title | Host Pathogen Interaction|
+| ------ | ------ |
+|Repository-name| [GitHub](https://github.com/cepdnaclk/e17-co328-Host-Pathogen-Interaction)|
+|Project page| [BioWeb](https://cepdnaclk.github.io/e17-co328-Host-Pathogen-Interaction/)|
+|Frontend| [BioWeb](https://bio2web.herokuapp.com/)|
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
