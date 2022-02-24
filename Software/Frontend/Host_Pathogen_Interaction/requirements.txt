@@ -12,7 +12,9 @@ colorama==0.4.4
 dataclasses-json==0.5.5
 decorator==4.4.2
 distlib==0.3.2
+dj-database-url==0.5.0
 Django==4.0.2
+django-heroku==0.3.1
 facebook-sdk==3.1.0
 filelock==3.0.12
 firebase==3.0.1
@@ -55,6 +57,7 @@ platformdirs==2.0.2
 pluggy==0.13.1
 proglog==0.1.9
 protobuf==3.17.3
+psycopg2==2.9.3
 py==1.10.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
