@@ -19,7 +19,7 @@
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{% static 'vendors/datatables.net-bs4/dataTables.bootstrap4.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'vendors/datatables.net-bs4/dataTables.bootstrap4.css' %}"> -->
     <link rel="stylesheet" href="{% static 'js/select.dataTables.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/my/style.css' %}">
     <!-- End plugin css for this page -->
@@ -500,8 +500,8 @@
                     <span class="support">Supports: CSV</span>
 
                 </div>
-                <button type="button" class="mybtn btn btn-info" id="viewfilebutton" onclick="viewFile()">View File</button>
-                <button type="button" class="mybtn btn btn-info" id="btnUploadFile" onclick="processFile()">Upload File</button>
+                <button style="display: none;" type="button" class="mybtn btn btn-info" id="viewfilebutton" onclick="viewFile()">View File</button>
+                <button style="display: none;" type="button" class="mybtn btn btn-info" id="btnUploadFile" onclick="processFile()">Upload File</button>
 
                 <!-- </div> -->
 
