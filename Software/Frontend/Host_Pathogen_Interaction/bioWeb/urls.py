@@ -19,7 +19,7 @@ from django.urls import path
 from bioWeb import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.home),
+    path("",views.index),
     path("index/",views.index),
     path("upload/",views.upload)
 ]
