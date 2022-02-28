@@ -1,0 +1,17 @@
+<div class="uploadSection">
+    <div class="drag-area">
+        <div class="icon">
+            <i class="fas fa-images"></i>
+        </div>
+
+        <span class="header"> <span class="browsebutton">Upload</span></span>
+        <input type="file" hidden id="fileToUpload" type=".csv" />
+        <span class="support">Supports: CSV</span>
+
+    </div>
+    <button style="display: none;" type="button" class="mybtn btn btn-info" id="viewfilebutton" onclick="viewFile()">View File</button>
+    <button style="display: none;" type="button" class="mybtn btn btn-info" id="btnUploadFile" onclick="processFile()">Upload File</button>
+</div>
+<div class="table-responsive col-md-12 csv-table" style="margin-top: 20px;">
+    <table id="myTable" class="table table-bordered table-hover table-striped" style="display: none;"></table>
+</div>

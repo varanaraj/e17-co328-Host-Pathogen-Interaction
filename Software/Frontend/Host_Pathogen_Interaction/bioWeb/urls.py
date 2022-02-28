@@ -13,13 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from atexit import register
 from distutils.command.upload import upload
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from bioWeb import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("",views.home),
-    path("index/",views.index),
-    path("upload/",views.upload)
+    path("",views.index,name="Index"),
+    path("register/", views.register, name="Register"),
+    path("login/", auth_views.LoginView.as_view(template_name='bioweb/login.html'), name="Login"),
+    path("logout/", auth_views.LogoutView.as_view(template_name='bioweb/indexnew.html'), name="Logout"),
+    path("collections/", views.collections, name="Collections"),
+    path("colldelete/<id>", views.collDelete, name="CollDelete"),
+
+
 ]

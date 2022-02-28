@@ -1,0 +1,35 @@
+{% load static %}{% include './elements/header.html' %} {% load crispy_forms_tags %}
+<div class="container-scroller">
+    {% include './elements/navbar.html' %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        {% include './elements/settings.html' %}
+
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        <div class="container-fluid">
+            <div class="col-md-offset-4 col-md-4">
+            </div>
+            <div class="col-md-offset-4 col-md-4 well">
+                {% if messages %} {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %} {% endif %}
+                <form method="POST" autocomplete="off">
+                    <h2 class="text-primary page-header text-center">User Login</h2>
+
+                    {% csrf_token %} {{form|crispy}}
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <div>
+                    <a href="{% url 'Register'%}">Sign Up Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+{% include './elements/footer.html' %}
