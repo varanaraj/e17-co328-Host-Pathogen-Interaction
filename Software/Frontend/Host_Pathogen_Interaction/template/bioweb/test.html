@@ -1,0 +1,20 @@
+{% load static %}{% include './elements/header.html' %}{% load crispy_forms_tags %}
+<div class="container-scroller">
+    {% include './elements/navbar.html' %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        {% include './elements/settings.html' %}
+
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        {% if user.is_authenticated %}{% include './elements/sidebar.html' %} {% include './elements/csvupload.html' %} {% endif %}
+        <form method="post">
+            {% csrf_token %} {{form|crispy}}
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+{% include './elements/footer.html' %}

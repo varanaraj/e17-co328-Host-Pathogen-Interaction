@@ -7,7 +7,7 @@
 }
 
 .uploadSection {
-    /* display: flex; */
+    display: -webkit-inline-box;
     height: fit-content;
     align-items: center;
     justify-content: center;
