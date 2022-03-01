@@ -1,9 +1,11 @@
+from fileinput import filename
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import CreateUserForm
 from .models import Collection
+from .models import CSVFile
 
 # Create your views here.
 def index(request):
@@ -40,8 +42,7 @@ def collections(request):
         name = request.POST.get('name')
 
         if(id==""):
-            coll = Collection(collectionName=name,
-                              userId=request.user)
+            coll = Collection(collectionName=name,userId=request.user)
             coll.save()
             return redirect('Collections')
 
@@ -54,7 +55,28 @@ def collections(request):
 
 
 def collDelete(request,id):
-    print(id)
     coll=Collection.objects.get(id=id)
     coll.delete()
     return redirect('Collections')
+
+
+# csv view 
+
+def csvView(request,id):
+    url='/csvviews/'+str(id)
+    collectionNo = id
+    if(request.method == "POST"):
+        id = request.FILES
+        myfile = request.FILES['myfile']
+        print(myfile.name)
+        collectionInstance=Collection.objects.get(id=collectionNo)
+        newFile = CSVFile(fileName=myfile.name.split(
+            ".")[0], collectionId=collectionInstance, csvFile=myfile)
+        newFile.save()
+        return redirect(url)
+
+        # coll.update(collectionName=request.POST.get('name'))
+    # print(id)
+    csvfiles = CSVFile.objects.filter(collectionId=collectionNo)
+    # print(csvfiles[0].fileName)
+    return render(request,'bioweb/csvviews.html',{"csvviews":csvfiles})

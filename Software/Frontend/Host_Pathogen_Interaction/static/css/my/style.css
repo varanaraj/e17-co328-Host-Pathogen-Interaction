@@ -137,3 +137,9 @@ h3 {
     background-color: #154660;
     border-color: #154660;
 }
+
+#fileToUpload {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}

@@ -9,6 +9,6 @@ class Collection(models.Model):
 
 
 class CSVFile(models.Model):
-    groupId = models.ForeignKey(Collection, on_delete=models.CASCADE)
-    fileName = models.CharField(max_length=30, unique=True)
+    collectionId = models.ForeignKey(Collection, on_delete=models.CASCADE)
+    fileName = models.CharField(max_length=30)
     csvFile = models.FileField()
