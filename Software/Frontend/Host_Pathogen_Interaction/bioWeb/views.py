@@ -1,3 +1,4 @@
+import csv
 from fileinput import filename
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -6,6 +7,7 @@ from django.contrib.auth.models import User
 from .forms import CreateUserForm
 from .models import Collection
 from .models import CSVFile
+import pandas as pd
 
 # Create your views here.
 def index(request):
@@ -66,17 +68,51 @@ def csvView(request,id):
     url='/csvviews/'+str(id)
     collectionNo = id
     if(request.method == "POST"):
-        id = request.FILES
-        myfile = request.FILES['myfile']
-        print(myfile.name)
-        collectionInstance=Collection.objects.get(id=collectionNo)
-        newFile = CSVFile(fileName=myfile.name.split(
-            ".")[0], collectionId=collectionInstance, csvFile=myfile)
-        newFile.save()
-        return redirect(url)
-
+        try:
+            id = request.FILES
+            myfile = request.FILES['myfile']
+            print(myfile.name)
+            collectionInstance=Collection.objects.get(id=collectionNo)
+            newFile = CSVFile(fileName=myfile.name.split(
+                ".")[0], collectionId=collectionInstance, csvFile=myfile)
+            newFile.save()
+            return redirect(url)
+        except:
+            id = request.POST.get('id')
+            name = request.POST.get('name')
+            csvUpdate = CSVFile.objects.filter(
+                id=request.POST.get('id')).update(fileName=name)
+            return redirect(url)
         # coll.update(collectionName=request.POST.get('name'))
     # print(id)
-    csvfiles = CSVFile.objects.filter(collectionId=collectionNo)
+    userIdFormColl = Collection.objects.get(id=collectionNo).userId
+    if(str(request.user.username) == str(userIdFormColl)):
+        csvfiles = CSVFile.objects.filter(collectionId=collectionNo)
     # print(csvfiles[0].fileName)
-    return render(request,'bioweb/csvviews.html',{"csvviews":csvfiles})
+        return render(request, 'bioweb/csvviews.html', {"csvviews": csvfiles})
+        pass
+    return redirect('Collections')
+
+    
+
+
+def csvDelete(request, id):
+    url=request.META.get('HTTP_REFERER')
+    csv = CSVFile.objects.get(id=id)
+    csv.delete()
+    return redirect(url)
+
+
+def readCSV(request,id):
+    try:
+        csvFile=CSVFile.objects.get(id=id)
+    except:
+        return redirect('/collections/')
+    coll = csvFile.collectionId
+    userIdformColl=Collection.objects.get(id=coll.id).userId.id
+    if(request.user.id==userIdformColl):
+        csvFileName=csvFile.csvFile
+        df=pd.read_csv(csvFileName)
+        data=df.to_html()
+        return render(request,'bioweb/readcsv.html',{"csvfiledata":data})
+    return redirect(request.META.get('HTTP_REFERER'))

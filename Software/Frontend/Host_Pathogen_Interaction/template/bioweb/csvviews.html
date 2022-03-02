@@ -17,17 +17,17 @@
                         <i class="fa fa-file-csv"></i>
                     </div>
                     <span class="header">
-                            <form method="POST" id="editcollection{{coll.id}}" style="display:none;">
+                            <form method="POST" id="editcollection{{csv.id}}" style="display:none;">
                                 {% csrf_token %}
                                 <input style="color: black;border: 0px;text-align: center;text-decoration: underline" class="browsebutton" type="text" name="name" id="" value="{{csv.fileName}}">
-                                <input hidden type="text" name="id" id="" value="{{coll.id}}">
+                                <input hidden type="text" name="id" id="" value="{{csv.id}}">
                                 <div style="margin: auto;">
                                 <input class="mybtn btn btn-info" style="border: 0px;text-align: center;width: fit-content;margin: auto;"  type="submit" value="update">
                                 </div>
                         
                             </form>
                             <div style="margin: auto;display:none;" id="colldelete{{csv.id}}">
-                                <a href="/colldelete/{{csv.id}}" style="display: grid;"><button type="button " class="mybtn btn btn-info ">Delete</button></a>
+                                <a href="/csvdelete/{{csv.id}}" style="display: grid;"><button type="button " class="mybtn btn btn-info ">Delete</button></a>
                             </div>
 
                     <span class="header" id="collname{{csv.id}}"> <span class="browsebutton">{{csv.fileName}}</span></span>
@@ -37,8 +37,8 @@
 
                     <div>
 
-                        <button type="button " id="colleditbutton{{coll.id}}" class="mybtn btn btn-info" onclick="collectionEdit('{{coll.id}}')">Edit</button>
-                        <a href="/csvviews/"><button type="button " class="mybtn btn btn-info ">View</button></a>
+                        <button type="button " id="colleditbutton{{csv.id}}" class="mybtn btn btn-info" onclick="collectionEdit('{{csv.id}}')">Edit</button>
+                        <a href="/readcsv/{{csv.id}}"><button type="button " class="mybtn btn btn-info ">View</button></a>
                     </div>
                 </div>
 
