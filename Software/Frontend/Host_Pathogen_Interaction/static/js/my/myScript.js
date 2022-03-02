@@ -123,6 +123,7 @@ function viewFile() {
 }
 
 function collectionEdit(collectionId) {
+    console.log(collectionId)
     if (document.getElementById("colleditbutton" + collectionId).innerHTML == "Edit") {
         document.getElementById("colleditbutton" + collectionId).innerHTML = "Cancel"
         document.getElementById("editcollection" + collectionId).style.display = 'inline-grid';
@@ -138,7 +139,6 @@ function collectionEdit(collectionId) {
 }
 
 function collectionAdd(collectionId) {
-    console.log(collectionId);
     const buttonText = document.getElementById("colleditbutton" + collectionId).innerHTML;
     if (buttonText == "New Collection") {
         document.getElementById("colleditbutton" + collectionId).innerHTML = "Cancel"
