@@ -27,6 +27,6 @@ urlpatterns = [
     path("collections/", views.collections, name="Collections"),
     path("colldelete/<id>", views.collDelete, name="CollDelete"),
     path("csvviews/<id>", views.csvView, name="CsvView"),
-
-
+    path("csvdelete/<id>", views.csvDelete, name="CsvDelete"),
+    path("readcsv/<id>", views.readCSV, name="ReadCSV"),
 ]

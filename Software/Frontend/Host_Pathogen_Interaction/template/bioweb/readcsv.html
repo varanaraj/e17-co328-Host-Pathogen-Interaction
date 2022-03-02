@@ -8,7 +8,8 @@
 
         <!-- partial -->
         <!-- partial:partials/_sidebar.html -->
-        {% if user.is_authenticated %}{% include './elements/sidebar.html' %} {% else %} {% include './intro.html' %} {% endif %}
+        {% if user.is_authenticated %}{% include './elements/sidebar.html' %}{% include './elements/csvreadsort.html' %}
+        <div>{{csvfiledata|safe}}</div> {% endif %}
 
     </div>
     <!-- page-body-wrapper ends -->
